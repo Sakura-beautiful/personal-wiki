@@ -21,10 +21,10 @@ const featuredProjects = projects.filter(p => p.data.featured).slice(0, 3);
 const recentLab = [...lab].sort(sortByDate).slice(0, 3);
 
 const sections = [
-  { label: 'Docs',     href: `${base}docs/`,     desc: 'System-level technical knowledge across robotics, AI, and engineering.',    icon: '📚' },
-  { label: 'Papers',   href: `${base}papers/`,   desc: 'Reading notes and personal understanding of research papers.',               icon: '📄' },
-  { label: 'Projects', href: `${base}projects/`, desc: 'Open source projects with full documentation and experiments.',              icon: '🔧' },
-  { label: 'Lab',      href: `${base}lab/`,      desc: 'Raw experiment logs, debug sessions, and exploration records.',              icon: '🧪' },
+  { label: '文档',   href: `${base}docs/`,     desc: '机器人、AI 与工程领域的系统性技术知识整理。',    icon: '📚' },
+  { label: '论文',   href: `${base}papers/`,   desc: '论文阅读笔记与个人理解。',                       icon: '📄' },
+  { label: '项目',   href: `${base}projects/`, desc: '开源项目，含完整文档与实验记录。',               icon: '🔧' },
+  { label: '实验室', href: `${base}lab/`,      desc: '原始实验日志、调试过程与探索记录。',             icon: '🧪' },
 ];
 ---
 
@@ -34,14 +34,14 @@ const sections = [
   <section class="pt-20 pb-16 md:pt-28 md:pb-20">
     <div class="container-wiki max-w-3xl">
       <p class="text-xs font-semibold uppercase tracking-widest text-[var(--color-text-muted)] mb-6">
-        Personal Research Wiki
+        个人研究知识库
       </p>
       <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-[var(--color-text)] leading-[1.15] mb-5">
-        Notes on building machines<br class="hidden sm:block" />
-        that understand the world.
+        关于构建能理解世界的<br class="hidden sm:block" />
+        机器的笔记。
       </h1>
       <p class="text-lg text-[var(--color-text-muted)] mb-8">
-        Robotics · AI · Embodied Intelligence
+        机器人 · 人工智能 · 具身智能
       </p>
       <a
         href={`${base}docs/`}
@@ -49,7 +49,7 @@ const sections = [
                bg-accent text-white font-medium text-sm
                hover:bg-[#3d5ce0] transition-colors"
       >
-        Browse Docs
+        浏览文档
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
           <path d="M5 12h14M12 5l7 7-7 7"/>
         </svg>
@@ -60,7 +60,7 @@ const sections = [
   <!-- Explore -->
   <section class="py-12 border-t border-[var(--color-border)]">
     <div class="container-wiki">
-      <p class="section-heading">Explore</p>
+      <p class="section-heading">探索</p>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {sections.map(s => (
           <a href={s.href} class="card-base group flex flex-col gap-3">
@@ -81,7 +81,7 @@ const sections = [
   {latest.length > 0 && (
     <section class="py-12 border-t border-[var(--color-border)]">
       <div class="container-wiki">
-        <p class="section-heading">Latest</p>
+        <p class="section-heading">最新内容</p>
         <div class="flex flex-col gap-3">
           {latest.map(entry => {
             const collection = entry.collection as string;
@@ -107,9 +107,9 @@ const sections = [
     <section class="py-12 border-t border-[var(--color-border)]">
       <div class="container-wiki">
         <div class="flex items-center justify-between mb-4">
-          <p class="section-heading mb-0">Featured Projects</p>
+          <p class="section-heading mb-0">精选项目</p>
           <a href={`${base}projects/`} class="text-xs text-[var(--color-text-muted)] hover:text-[var(--color-text)] transition-colors">
-            All projects →
+            全部项目 →
           </a>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -134,9 +134,9 @@ const sections = [
     <section class="py-12 border-t border-[var(--color-border)]">
       <div class="container-wiki">
         <div class="flex items-center justify-between mb-4">
-          <p class="section-heading mb-0">Recent Lab Notes</p>
+          <p class="section-heading mb-0">最新实验记录</p>
           <a href={`${base}lab/`} class="text-xs text-[var(--color-text-muted)] hover:text-[var(--color-text)] transition-colors">
-            All records →
+            全部记录 →
           </a>
         </div>
         <div class="flex flex-col gap-3">
