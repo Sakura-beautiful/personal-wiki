@@ -1,5 +1,12 @@
 ---
+title: "Human-to-Robot Dexterous Manipulation via Egocentric Learning"
+description: "人类灵巧操作到机器人策略迁移的视觉差距、数据成本与标注难题分析，以及 EgoScale 的解决思路。"
+authors: "HumanEgo Analysis"
 date: 2026-07-13
+tags:
+  - RobotLearning
+  - DexterousManipulation
+  - EgoScale
 ---
 
 # 1.Ego面临的最大困难
