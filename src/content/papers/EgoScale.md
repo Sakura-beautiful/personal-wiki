@@ -1,5 +1,12 @@
 ---
+title: "EgoScale: Scaling Dexterous Manipulation with Egocentric Human Video Pretraining"
+description: "利用大规模第一视角人类操作视频预训练，通过极少量机器人数据完成具身对齐，实现复杂灵巧操作能力迁移的三阶段训练范式。"
+authors: "EgoScale Team"
 date: 2026-07-01
+tags:
+  - RobotLearning
+  - DexterousManipulation
+  - Embodiment
 ---
 # 1. 项目背景
 
@@ -186,16 +193,11 @@ $$
 
 即：
 $$  
-q_{hand}
-
-[q_1,q_2,...,q_{22}]  
+q_{hand} = [q_1,q_2,...,q_{22}]  
 $$
 优化目标：
 $$  
-q^*
-
-\arg\min_q  
-L(q)  
+q^* = \arg\min_q L(q)  
 $$
 
 其中损失函数由多个部分组成：
@@ -213,23 +215,15 @@ $$
 
 位置误差：
 $$  
-L_{pos}
-
-\sum_i  
-||p_i^{robot}(q)-p_i^{human}||^2  
+L_{pos} = \sum_i \|p_i^{robot}(q)-p_i^{human}\|^2  
 $$
 姿态误差：
 $$  
-L_{rot}
-
-\sum_i  
-||R_i^{robot}(q)-R_i^{human}||^2  
+L_{rot} = \sum_i \|R_i^{robot}(q)-R_i^{human}\|^2  
 $$
 平滑约束： 
 $$  
-L_{smooth}
-
-||q_t-q_{t-1}||^2  
+L_{smooth} = \|q_t-q_{t-1}\|^2  
 $$
 同时满足机器人关节约束：
 $$  
@@ -396,18 +390,14 @@ $$
 
 随后输入 DiT Action Expert：
 
-# $$  
-a_{t:t+H}
-
-\pi_\theta(\phi_t,q_t)  
+$$  
+a_{t:t+H} = \pi_\theta(\phi_t,q_t)  
 $$
 
 输出未来动作序列：
 
-# $$  
-a_{t:t+H}
-
-[a_t,a_{t+1},...,a_{t+H}]  
+$$  
+a_{t:t+H} = [a_t,a_{t+1},...,a_{t+H}]  
 $$
 
 其中：
@@ -469,13 +459,8 @@ $$
 
 训练损失：
 
-# $$  
-L_{FM}
-
-E  
-\left[  
-||v_\theta(x_t,t,c)-u_t||^2  
-\right]  
+$$  
+L_{FM} = E\left[\|v_\theta(x_t,t,c)-u_t\|^2\right]  
 $$
 
 其中：
@@ -565,11 +550,7 @@ $$
 人类数据规模与验证损失之间满足对数线性关系：
 
 $$  
-L
-
-## 0.024
-
-0.003\ln(D)  
+L = 0.024 - 0.003\ln(D)  
 $$
 
 其中：
