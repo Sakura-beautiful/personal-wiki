@@ -1,0 +1,66 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Card from '../../components/Card.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const [papers, projects, lab, blog] = await Promise.all([
+    getCollection('papers',   ({ data }) => !data.draft),
+    getCollection('projects', ({ data }) => !data.draft),
+    getCollection('lab',      ({ data }) => !data.draft),
+    getCollection('blog',     ({ data }) => !data.draft),
+  ]);
+
+  const allEntries = [
+    ...papers.map(e => ({ ...e, collection: 'papers' })),
+    ...projects.map(e => ({ ...e, collection: 'projects' })),
+    ...lab.map(e => ({ ...e, collection: 'lab' })),
+    ...blog.map(e => ({ ...e, collection: 'blog' })),
+  ];
+
+  const tagMap = new Map<string, typeof allEntries>();
+  for (const entry of allEntries) {
+    for (const tag of entry.data.tags) {
+      if (!tagMap.has(tag)) tagMap.set(tag, []);
+      tagMap.get(tag)!.push(entry);
+    }
+  }
+
+  return Array.from(tagMap.entries()).map(([tag, entries]) => ({
+    params: { tag },
+    props: { tag, entries },
+  }));
+}
+
+const { tag, entries } = Astro.props;
+const base = import.meta.env.BASE_URL;
+
+const sorted = [...entries].sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+---
+
+<BaseLayout title={`#${tag}`} description={`All content tagged with #${tag}`}>
+  <div class="container-wiki py-12">
+    <div class="mb-10">
+      <a href={`${base}`} class="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-text)] transition-colors block mb-4">
+        ← Home
+      </a>
+      <h1 class="text-2xl font-bold text-[var(--color-text)] mb-1">#{tag}</h1>
+      <p class="text-sm text-[var(--color-text-muted)]">{sorted.length} {sorted.length === 1 ? 'result' : 'results'}</p>
+    </div>
+
+    <div class="flex flex-col gap-3">
+      {sorted.map(entry => (
+        <Card
+          href={`${base}${entry.collection}/${entry.slug}/`}
+          title={entry.data.title}
+          description={entry.data.description}
+          date={entry.data.date}
+          tags={entry.data.tags}
+          meta={entry.collection.charAt(0).toUpperCase() + entry.collection.slice(1)}
+        />
+      ))}
+    </div>
+  </div>
+</BaseLayout>

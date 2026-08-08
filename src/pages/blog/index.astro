@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Card from '../../components/Card.astro';
+import { getCollection } from 'astro:content';
+
+const base = import.meta.env.BASE_URL;
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<BaseLayout title="Blog" description="Technical articles, thoughts, and research logs.">
+  <div class="container-wiki py-12">
+    <div class="mb-10">
+      <h1 class="text-2xl font-bold text-[var(--color-text)] mb-2">Blog</h1>
+      <p class="text-[var(--color-text-muted)]">
+        Technical articles, thoughts, and research logs.
+      </p>
+    </div>
+
+    {posts.length === 0 ? (
+      <p class="text-[var(--color-text-muted)] text-sm py-12 text-center">No posts yet.</p>
+    ) : (
+      <div class="flex flex-col gap-3">
+        {posts.map(entry => (
+          <Card
+            href={`${base}blog/${entry.slug}/`}
+            title={entry.data.title}
+            description={entry.data.description}
+            date={entry.data.date}
+            tags={entry.data.tags}
+          />
+        ))}
+      </div>
+    )}
+  </div>
+</BaseLayout>

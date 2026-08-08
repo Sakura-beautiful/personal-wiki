@@ -1,0 +1,14 @@
+---
+interface Props {
+  tag: string;
+  href?: string;
+}
+
+const { tag, href } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const link = href ?? `${base}tags/${encodeURIComponent(tag)}/`;
+---
+
+<a href={link} class="tag-badge hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors">
+  {tag}
+</a>

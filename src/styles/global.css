@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-bg: #ffffff;
+    --color-surface: #f9f9f9;
+    --color-border: #e5e5e5;
+    --color-text: #111111;
+    --color-text-muted: #666666;
+    --color-accent: #4f6ef7;
+  }
+
+  .dark {
+    --color-bg: #0c0c0c;
+    --color-surface: #141414;
+    --color-border: #2a2a2a;
+    --color-text: #f0f0f0;
+    --color-text-muted: #888888;
+    --color-accent: #6b8afb;
+  }
+
+  html {
+    font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    min-height: 100vh;
+    transition: background-color 0.15s ease, color 0.15s ease;
+  }
+
+  code {
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    font-size: 0.875em;
+  }
+
+  ::selection {
+    background-color: #4f6ef720;
+  }
+}
+
+@layer components {
+  .container-wiki {
+    @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .tag-badge {
+    @apply inline-flex items-center px-2 py-0.5 rounded text-xs font-medium
+           bg-neutral-100 text-neutral-600
+           dark:bg-neutral-800 dark:text-neutral-400
+           transition-colors;
+  }
+
+  .card-base {
+    @apply bg-white dark:bg-[#141414]
+           border border-[#e5e5e5] dark:border-[#2a2a2a]
+           rounded-lg p-5
+           hover:border-[#4f6ef7] dark:hover:border-[#6b8afb]
+           transition-colors duration-150
+           block no-underline;
+  }
+
+  .section-heading {
+    @apply text-xs font-semibold uppercase tracking-widest
+           text-neutral-400 dark:text-neutral-500
+           mb-4;
+  }
+}

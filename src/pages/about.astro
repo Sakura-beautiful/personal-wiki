@@ -1,0 +1,65 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="About" description="A brief introduction.">
+  <div class="container-wiki py-16 max-w-2xl">
+    <h1 class="text-2xl font-bold text-[var(--color-text)] mb-10">About</h1>
+
+    <dl class="space-y-6">
+      <div class="flex flex-col sm:flex-row sm:gap-8">
+        <dt class="text-sm font-medium text-[var(--color-text-muted)] sm:w-36 shrink-0 mb-1 sm:mb-0">Name</dt>
+        <dd class="text-[var(--color-text)]">[YOUR NAME]</dd>
+      </div>
+
+      <div class="flex flex-col sm:flex-row sm:gap-8">
+        <dt class="text-sm font-medium text-[var(--color-text-muted)] sm:w-36 shrink-0 mb-1 sm:mb-0">Education</dt>
+        <dd class="text-[var(--color-text)]">[UNIVERSITY · DEGREE · YEAR]</dd>
+      </div>
+
+      <div class="flex flex-col sm:flex-row sm:gap-8">
+        <dt class="text-sm font-medium text-[var(--color-text-muted)] sm:w-36 shrink-0 mb-1 sm:mb-0">Research Interests</dt>
+        <dd class="text-[var(--color-text)]">
+          Robotics · Embodied AI · Computer Vision · Robot Learning
+        </dd>
+      </div>
+
+      <div class="flex flex-col sm:flex-row sm:gap-8">
+        <dt class="text-sm font-medium text-[var(--color-text-muted)] sm:w-36 shrink-0 mb-1 sm:mb-0">GitHub</dt>
+        <dd>
+          <a
+            href="https://github.com/Sakura-beautiful"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-accent hover:underline"
+          >
+            github.com/Sakura-beautiful
+          </a>
+        </dd>
+      </div>
+
+      <div class="flex flex-col sm:flex-row sm:gap-8">
+        <dt class="text-sm font-medium text-[var(--color-text-muted)] sm:w-36 shrink-0 mb-1 sm:mb-0">Email</dt>
+        <dd class="text-[var(--color-text)]">[YOUR EMAIL]</dd>
+      </div>
+
+      <div class="flex flex-col sm:flex-row sm:gap-8">
+        <dt class="text-sm font-medium text-[var(--color-text-muted)] sm:w-36 shrink-0 mb-1 sm:mb-0">CV</dt>
+        <dd>
+          <a href="#" class="text-accent hover:underline">[Link to CV PDF]</a>
+        </dd>
+      </div>
+    </dl>
+
+    <div class="mt-16 pt-8 border-t border-[var(--color-border)]">
+      <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">
+        This site is a personal research wiki — a living record of what I learn, build, and understand
+        in the fields of robotics, AI, and embodied intelligence. It is not a portfolio or resume.
+      </p>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .text-accent { color: #4f6ef7; }
+</style>
